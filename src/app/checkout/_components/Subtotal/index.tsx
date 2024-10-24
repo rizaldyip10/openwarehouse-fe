@@ -25,10 +25,10 @@ export default function Subtotal() {
       </div>
       <div className='flex w-full items-center justify-center gap-2'>
         <Button className='hover:bg-extends-secondaryPurple w-[45%] bg-extends-purple'>
-          Checkout
+          Continue shopping
         </Button>
         <Button className='hover:bg-extends-secondaryPurple w-[45%] bg-extends-purple'>
-          Checkout
+          Back to cart
         </Button>
       </div>
       <div className='p-4 text-extends-softGrey'>
