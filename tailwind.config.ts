@@ -67,6 +67,8 @@ const config: Config = {
           purple: '#5C3DC3',
           lightPink: '#F3F2FB',
           darkNavy: '#161B2E',
+          softPink: '#EFEBF9',
+          brokenWhite: '#F3F4F6',
         },
       },
     },
