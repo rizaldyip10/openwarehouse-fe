@@ -16,7 +16,7 @@ export default function OrderSummary() {
       <Separator className='w-full' />
       <Table>
         <TableHeader>
-          <TableRow className='bg-slate-200'>
+          <TableRow className='bg-slate-100'>
             <TableHead className='w-[50%] px-4 py-2 text-left'>
               PRODUCTS
             </TableHead>
