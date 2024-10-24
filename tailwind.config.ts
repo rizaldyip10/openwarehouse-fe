@@ -1,18 +1,18 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-    darkMode: ["class"],
-    content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  darkMode: ['class'],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
   	extend: {
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
   			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-			'soft-gradient': 'linear-gradient(89.84deg, rgba(230, 36, 174, 0.15) 0.34%, rgba(94, 58, 255, 0.15) 16.96%, rgba(10, 136, 255, 0.15) 34.66%, rgba(75, 191, 80, 0.15) 50.12%, rgba(137, 206, 0, 0.15) 66.22%, rgba(239, 183, 0, 0.15) 82%, rgba(246, 73, 0, 0.15) 99.9%)'
+			  'soft-gradient': 'linear-gradient(89.84deg, rgba(230, 36, 174, 0.15) 0.34%, rgba(94, 58, 255, 0.15) 16.96%, rgba(10, 136, 255, 0.15) 34.66%, rgba(75, 191, 80, 0.15) 50.12%, rgba(137, 206, 0, 0.15) 66.22%, rgba(239, 183, 0, 0.15) 82%, rgba(246, 73, 0, 0.15) 99.9%)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -63,6 +63,6 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require('tailwindcss-animate')],
 };
 export default config;
