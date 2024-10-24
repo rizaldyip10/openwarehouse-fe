@@ -62,9 +62,11 @@ const config: Config = {
         },
         extends: {
           bgDefault: '#ECF0FC',
-          softGrey: '#485469',
+          darkGrey: '#485469',
+          softGrey: '#63758B',
           purple: '#5C3DC3',
           lightPink: '#F3F2FB',
+          darkNavy: '#161B2E',
         },
       },
     },

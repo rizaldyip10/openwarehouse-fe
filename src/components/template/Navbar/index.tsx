@@ -42,7 +42,7 @@ export default function Navbar() {
                 className='h-10 w-[1px] bg-gray-200'
               />
               <DropdownMenu>
-                <DropdownMenuTrigger className='text-extends-softGrey flex items-center whitespace-nowrap text-[14px]'>
+                <DropdownMenuTrigger className='text-extends-darkGrey flex items-center whitespace-nowrap text-[14px]'>
                   Best Matches
                 </DropdownMenuTrigger>
                 <DropdownMenuContent sideOffset={20}>
@@ -73,7 +73,7 @@ export default function Navbar() {
               <AvatarImage src='https://github.com/shadcn.png' />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            <Label className='text-extends-softGrey'>Maria Gibson</Label>
+            <Label className='text-extends-darkGrey'>Maria Gibson</Label>
           </div>
         </div>
       </div>
