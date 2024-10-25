@@ -7,10 +7,16 @@ import {
   CarouselItem,
   type CarouselApi
 } from "@/components/ui/carousel";
-import imgPlaceholder from "@/assets/images/01.png";
-import Image from "next/image";
 import { useRef } from "react";
+import pro5 from "@/assets/images/pro-4.png";
+import pro6 from "@/assets/images/pro-2.png";
+import pro7 from "@/assets/images/pro-3.png";
+import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+
+const imgs = [
+  pro5, pro6, pro7
+]
 
 export default function HeroCarousel(): JSX.Element {
   const [api, setApi] = useState<CarouselApi>();
@@ -60,10 +66,10 @@ export default function HeroCarousel(): JSX.Element {
         }}
       >
         <CarouselContent>
-          {[...Array(3)].map((_, index) => (
+          {imgs.map((img, index) => (
             <CarouselItem key={index}>
               <Image 
-                src={imgPlaceholder} 
+                src={img} 
                 alt={`product ${index + 1}`} 
                 priority={index === 0}
               />
