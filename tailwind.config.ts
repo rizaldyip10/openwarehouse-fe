@@ -65,6 +65,7 @@ const config: Config = {
           darkGrey: '#485469',
           softGrey: '#63758B',
           purple: '#5C3DC3',
+          secondaryPurple: '#492F9D',
           lightPink: '#F3F2FB',
           darkNavy: '#161B2E',
           softPink: '#EFEBF9',
