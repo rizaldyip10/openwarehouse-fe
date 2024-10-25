@@ -1,5 +1,5 @@
-import { ProductListData } from '@/app/data/DummyData'
 import { ProductCard } from '@/components/template/ProductCard'
+import { ProductListData } from '@/data/DummyData'
 import React from 'react'
 
 export default function ProductList() {

@@ -1,10 +1,10 @@
-import { ProductType } from "@/app/types/Product";
+import { ProductType } from "@/types/Product";
 import { cn } from "@/lib/utils";
 import { FC, HTMLAttributes } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Star } from "lucide-react";
-import { currencyFormatter } from "@/app/utils/CurrencyFormatter";
+import { currencyFormatter } from "@/utils/CurrencyFormatter";
 
 interface IProductCard extends HTMLAttributes<HTMLDivElement> {
     product: ProductType;

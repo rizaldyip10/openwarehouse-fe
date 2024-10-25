@@ -1,4 +1,4 @@
-import { BennefitsData } from "@/app/data/DummyData";
+import { BennefitsData } from "@/data/DummyData";
 import BennefitsCard from "./BennefitsCard";
 
 export default function BennefitsSection() {

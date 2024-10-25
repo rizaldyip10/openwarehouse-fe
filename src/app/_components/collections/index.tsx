@@ -1,4 +1,4 @@
-import { CollectionsData } from "@/app/data/DummyData";
+import { CollectionsData } from "@/data/DummyData";
 import CollectionCard from "./CollectionCard";
 
 
