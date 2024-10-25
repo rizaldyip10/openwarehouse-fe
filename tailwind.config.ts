@@ -59,7 +59,17 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+        extends: {
+          bgDefault: '#ECF0FC',
+          darkGrey: '#485469',
+          softGrey: '#63758B',
+          purple: '#5C3DC3',
+          lightPink: '#F3F2FB',
+          darkNavy: '#161B2E',
+          softPink: '#EFEBF9',
+          brokenWhite: '#F3F4F6',
+        },
   		}
   	}
   },
