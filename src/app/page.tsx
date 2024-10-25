@@ -1,6 +1,6 @@
-import CollectionSection from "./_components/collections";
-import HeroSection from "./_components/hero";
-import PopularBrands from "./_components/popular-brands";
+import CollectionSection from "./_components/Collections";
+import HeroSection from "./_components/Hero";
+import PopularBrands from "./_components/PopularStores";
 
 export default function Home() {
   return (
