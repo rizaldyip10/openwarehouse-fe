@@ -14,52 +14,58 @@ export const ProductListData: ProductType[] = [
         name: "White Table Camera",
         rating: 4.8,
         category: "Electronic",
-        price: 49,
+        price: 500000,
         imageUrl: pro1
     },
     {
         name: "N95 Covid Mask",
         rating: 4.8,
         category: "Covid Safety",
-        price: 49,
+        price: 49000,
         imageUrl: pro2
     },
     {
         name: "Imported VR Box",
         rating: 4.8,
         category: "Entertainment",
-        price: 49,
+        price: 4900000,
         imageUrl: pro3
     },
     {
         name: "New Colorful Shoes",
         rating: 4.8,
         category: "Footwear",
-        price: 49,
+        price: 1250000,
         imageUrl: pro4
     },
     {
         name: "Mannat 530 Bluetooth Wireless",
         rating: 4.8,
         category: "Entertainment",
-        price: 49,
+        price: 600000,
         imageUrl: pro5
     },
     {
         name: "Robo Men Oversized hoo - Blue",
         rating: 4.8,
         category: "Clothes",
-        price: 49,
+        price: 450000,
         imageUrl: pro6
     },
     {
         name: "Mannat HD, Smart LED Fire TV",
         rating: 4.8,
         category: "Electronic",
-        price: 49,
+        price: 3200000,
         imageUrl: pro7
     },
-    
+    {
+        name: "New Colorful Shoes",
+        rating: 4.8,
+        category: "Footwear",
+        price: 1250000,
+        imageUrl: pro4
+    },
 ];
 
 export const CollectionsData = [
