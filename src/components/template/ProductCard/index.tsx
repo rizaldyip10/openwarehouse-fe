@@ -13,7 +13,10 @@ interface IProductCard extends HTMLAttributes<HTMLDivElement> {
 export const ProductCard: FC<IProductCard> = ({ product, className, ...props }) => {
     return (
         <div 
-            className={cn("w-full flex flex-col items-center justify-center gap-2 border shadow-sm bg-white", className)}
+            className={cn(
+                "w-full flex flex-col items-center gap-2 border shadow-sm bg-white cursor-pointer",
+                className
+            )}
             {...props}
         >
             <div className="w-full flex justify-center items-center bg-extends-bgDefault py-4 group">
