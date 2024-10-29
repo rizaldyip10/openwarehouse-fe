@@ -41,7 +41,7 @@ export default function LabelWithInput(props: LabelWithInputProps) {
           </SelectTrigger>
           <SelectContent>
             {selectContent?.map((item) => (
-              <SelectItem value='light'>{item}</SelectItem>
+              <SelectItem value={item}>{item}</SelectItem>
             ))}
           </SelectContent>
         </Select>
