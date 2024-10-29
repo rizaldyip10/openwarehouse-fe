@@ -90,7 +90,7 @@ export default function DeliveryAddress() {
         </div>
       </div>
       <div className='flex gap-2 p-4'>
-        <Button className='hover:bg-extends-secondaryPurple bg-extends-purple'>
+        <Button className='bg-extends-purple hover:bg-extends-secondaryPurple'>
           Save
         </Button>
         <Button

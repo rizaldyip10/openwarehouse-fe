@@ -1,8 +1,8 @@
+'use client';
+
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { LuShoppingCart } from 'react-icons/lu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import {
   DropdownMenu,
@@ -20,8 +20,62 @@ import {
 } from '@/components/ui/hover-card';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import Link from 'next/link';
+import useStore from '@/zustand';
+import { useEffect } from 'react';
+import { getCookie } from '@/config/cookie';
+import { useKeepLogin } from '@/services/user/login/hooks/useKeepLogin';
+import AvatarNav from '../AvatarNav';
+import { MaskFullname } from '@/utils/MaskFullname';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+interface NavContent {
+  contentName: string;
+  url: string;
+}
+
+const navContent: NavContent[] = [
+  {
+    contentName: 'Home',
+    url: '/',
+  },
+  {
+    contentName: 'Products',
+    url: '/',
+  },
+  {
+    contentName: 'Stores',
+    url: '/store',
+  },
+  {
+    contentName: 'Checkout',
+    url: '/checkout',
+  },
+];
 
 export default function Navbar() {
+  const { isAuthenticated, fullname, logout } = useStore();
+
+  const { keepLoginMutation } = useKeepLogin();
+
+  useEffect(() => {
+    const handleGetCookie = async () => {
+      const userToken = await getCookie();
+
+      if (userToken?.value) {
+        keepLoginMutation();
+      } else {
+        return;
+      }
+    };
+    handleGetCookie();
+  }, [isAuthenticated]);
+
   return (
     <div>
       <div className='flex h-[60px] items-center justify-between bg-extends-bgDefault px-24 py-10'>
@@ -41,17 +95,15 @@ export default function Navbar() {
                 orientation='vertical'
                 className='h-10 w-[1px] bg-gray-200'
               />
-              <DropdownMenu>
-                <DropdownMenuTrigger className='text-extends-darkGrey flex items-center whitespace-nowrap text-[14px]'>
-                  Best Matches
-                </DropdownMenuTrigger>
-                <DropdownMenuContent sideOffset={20}>
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Billing</DropdownMenuItem>
-                  <DropdownMenuItem>Team</DropdownMenuItem>
-                  <DropdownMenuItem>Subscription</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Select>
+                <SelectTrigger className='w-[200px] border-none'>
+                  <SelectValue placeholder='All Categories' />
+                </SelectTrigger>
+                <SelectContent sideOffset={10}>
+                  <SelectItem value='best matches'>Best Matches</SelectItem>
+                  <SelectItem value='newest'>Newest</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <Button
               variant={'outline'}
@@ -61,21 +113,38 @@ export default function Navbar() {
             </Button>
           </div>
         </div>
-        <div className='flex items-center gap-6'>
-          <Button
-            variant={'outline'}
-            className='flex h-12 w-12 items-center justify-center rounded-full px-0 py-0'
-          >
-            <LuShoppingCart size={20} strokeWidth={2} />
-          </Button>
-          <div className='flex items-center gap-2'>
-            <Avatar className='h-10 w-10'>
-              <AvatarImage src='https://github.com/shadcn.png' />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <Label className='text-extends-darkGrey'>Maria Gibson</Label>
+        {isAuthenticated ? (
+          <div className='flex items-center gap-6'>
+            <Button
+              variant={'outline'}
+              className='flex h-12 w-12 items-center justify-center rounded-full px-0 py-0'
+            >
+              <LuShoppingCart size={20} strokeWidth={2} />
+            </Button>
+            <div className='flex items-center gap-2'>
+              <AvatarNav
+                logout={logout}
+                fullname={MaskFullname(fullname as string)}
+              />
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className='flex items-center gap-6'>
+            <Link href={'/signin'}>
+              <Button className='bg-extends-purple hover:bg-extends-secondaryPurple'>
+                Sign In
+              </Button>
+            </Link>
+            <Link href={'/signup'}>
+              <Button
+                variant={'outline'}
+                className='border-dashed border-extends-purple bg-extends-lightPink text-extends-purple hover:border-white hover:bg-extends-purple hover:text-white'
+              >
+                Sign Up
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
       <div className='flex h-[60px] items-center justify-between border-b-2 px-24 py-10'>
         <div className='flex items-center gap-14'>
@@ -90,18 +159,17 @@ export default function Navbar() {
             </HoverCardContent>
           </HoverCard>
           <div className='flex h-[50px] min-w-[500px] items-center justify-between space-x-4 px-3'>
-            <Link href={'/'} className='hover:text-extends-purple'>
-              Home
-            </Link>
-            <Link href={'/'} className='hover:text-extends-purple'>
-              Products
-            </Link>
-            <Link href={'/'} className='hover:text-extends-purple'>
-              Stores
-            </Link>
-            <Link href={'/'} className='hover:text-extends-purple'>
-              Checkout
-            </Link>
+            {navContent.map((content: NavContent) => {
+              return (
+                <Link
+                  href={content.url}
+                  key={content.contentName}
+                  className='hover:text-extends-purple'
+                >
+                  {content.contentName}
+                </Link>
+              );
+            })}
           </div>
         </div>
         <div className='flex items-center gap-6'>
