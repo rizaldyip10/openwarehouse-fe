@@ -46,7 +46,7 @@ const navContent: NavContent[] = [
   },
   {
     contentName: 'Products',
-    url: '/',
+    url: '/products',
   },
   {
     contentName: 'Stores',
