@@ -4,8 +4,10 @@ export interface AuthSlice {
   fullname: string | null;
   username: string | null;
   isLoading: boolean;
+  role: string | null;
+  pin: string | null;
   setIsLoading: (loading: boolean) => void;
-  login: (email: string, fullname: string) => void;
+  login: (email: string, fullname: string, role: string, pin?: string) => void;
   logout: () => void;
 }
 

@@ -2,7 +2,7 @@
 
 import Loading from '@/components/template/Loading';
 import { useKeepLogin } from '@/services/user/login/hooks/useKeepLogin';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getCookie } from '@/config/cookie';
 
@@ -15,10 +15,28 @@ const LoadingScreen = () => (
 const LoaderUserDashboard = ({ allowedRoles, children }: any) => {
   const { keepLoginMutation, status, userData } = useKeepLogin();
   const navigate = useRouter();
+  const [cookieChecked, setCookieChecked] = useState<boolean>(false);
 
   useEffect(() => {
-    keepLoginMutation();
-  }, [keepLoginMutation]);
+    const checkCookie = async () => {
+      const cookie = await getCookie();
+      if (!cookie) {
+        navigate.push('/signin');
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        setCookieChecked(true);
+      }
+    };
+    checkCookie();
+  }, [navigate]);
+
+  useEffect(() => {
+    if (cookieChecked) {
+      keepLoginMutation();
+    }
+  }, [keepLoginMutation, cookieChecked]);
 
   const currentRole = userData?.data?.data?.role || null;
   const isAllowed = currentRole && allowedRoles.includes(currentRole);
@@ -29,7 +47,7 @@ const LoaderUserDashboard = ({ allowedRoles, children }: any) => {
     }
   }, [status, isAllowed, navigate]);
 
-  if (status === 'pending' || !currentRole) {
+  if (!cookieChecked || status === 'pending') {
     return <LoadingScreen />;
   }
 
