@@ -9,9 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import useStore from '@/zustand';
-import { useRouter } from 'next/navigation';
-import { useKeepLogin } from '@/services/user/login/hooks/useKeepLogin';
 
 const orders = [
   {
@@ -80,14 +77,9 @@ const orders = [
 ];
 
 export default function TableDemo() {
-  const { role, isAuthenticated } = useStore();
-  const { status } = useKeepLogin();
-  const router = useRouter();
-
   return (
-    <div className='bg-extends-brokenWhite p-2'>
+    <div className='rounded-md bg-extends-brokenWhite p-2'>
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className='w-[100px]'>Order ID</TableHead>

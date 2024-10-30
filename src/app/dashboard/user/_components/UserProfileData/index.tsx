@@ -3,6 +3,7 @@
 import useStore from '@/zustand';
 import { MdOutlineEmail, MdOutlinePerson } from 'react-icons/md';
 import { Separator } from '@/components/ui/separator';
+import UserPin from '../UserPin';
 
 export default function UserProfileData() {
   const { email, fullname, pin } = useStore();
@@ -18,15 +19,7 @@ export default function UserProfileData() {
         {fullname}
       </div>
       <Separator className='bg-extends-darkGrey' />
-      {pin ? (
-        <div className='flex items-center justify-center text-extends-darkGrey'>
-          Forgot Pin
-        </div>
-      ) : (
-        <div className='flex items-center justify-center text-extends-darkGrey'>
-          Create Pin
-        </div>
-      )}
+      {pin ? <UserPin title='Forgot Pin' /> : <UserPin title='Add Pin' />}
     </>
   );
 }
