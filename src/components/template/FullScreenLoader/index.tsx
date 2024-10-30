@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useGetStore } from '@/services/store/hooks/useGetStore';
 
 const FullScreenLoader = () => {
-  const { keepLoginMutation, status } = useKeepLogin();
+  const { keepLoginMutation, status, userData } = useKeepLogin();
   const { storeDataLoading } = useGetStore();
 
   useEffect(() => {

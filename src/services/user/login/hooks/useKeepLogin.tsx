@@ -1,5 +1,3 @@
-'use client';
-
 import { useKeepLoginMutation } from '../api/useKeepLoginMutation';
 import useStore from '@/zustand';
 
@@ -9,22 +7,18 @@ export const useKeepLogin = () => {
     mutate: keepLoginMutation,
     isPending: keepLoginLoading,
     status,
+    data: userData,
   } = useKeepLoginMutation({
     onSuccess: async (res: any) => {
-      try {
-        setIsLoading(true);
+      setIsLoading(true);
 
-        const { email, fullname } = res?.data?.data;
-
-        login(email, fullname);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
+      const { email, fullname, role, pin } = res?.data?.data;
+      login(email, fullname, role, pin);
+      setIsLoading(false);
     },
     onError: (err: any) => {
       logout();
+      setIsLoading(false);
     },
   });
 
@@ -32,5 +26,6 @@ export const useKeepLogin = () => {
     keepLoginMutation,
     keepLoginLoading,
     status,
+    userData,
   };
 };
